@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bouncing balls</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+
+  </head>
+
+
+  <body>
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+
+      var list = document.querySelector("ul");
+      var item = document.querySelector("#item"); 
+      var btn = document.querySelector("button");
+
+      btn.addEventListener("click",function(){
+        var itemValue = item.value;
+        item.value = " ";
+		
+		//创建li 
+        var listLi = document.createElement("li");
+		//li 添加至ul
+		list.appendChild(listLi);
+		//创建span button
+        var listSpan = document.createElement("span");
+        var listBtn = document.createElement("button");
+
+        //span button 添加至li下
+        listLi.appendChild(listSpan);
+        listLi.appendChild(listBtn);
+
+		
+        listSpan.textContent = itemValue;
+        listBtn.textContent = "Delete";
+		
+		
+		//删除
+        listBtn.onclick = function(e){
+          listLi.parentNode.removeChild(listLi);
+        }
+
+        
+		//聚焦输入框准备输入下一个购物项
+        item.focus();
+
+
+
+
+      });
+
+      
+
+      
+
+
+
+    </script>
+  </body>
+</html>
